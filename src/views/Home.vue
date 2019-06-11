@@ -1,18 +1,28 @@
 <template>
-  <div class="home">
+  <div class="container is-fluid">
     <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <List></List>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import List from '@/components/List'
+import { getAllProducts } from '@/service/api'
 
 export default {
   name: 'home',
   components: {
-    HelloWorld
+    List
+  },
+  async mounted () {
+    await getAllProducts()
+      .then(data => {
+        console.log(data.data)
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
 }
 </script>
