@@ -1,7 +1,9 @@
 <template>
-  <div class="container is-fluid">
+  <div>
     <img alt="Vue logo" src="../assets/logo.png">
-    <List></List>
+    <div class="container">
+      <List :data="products " />
+    </div>
   </div>
 </template>
 
@@ -15,10 +17,16 @@ export default {
   components: {
     List
   },
+  data () {
+    return {
+      products: null
+    }
+  },
   async mounted () {
     await getAllProducts()
       .then(data => {
-        console.log(data.data)
+        console.log(data.data.products)
+        this.products = data.data.products
       })
       .catch(err => {
         console.log(err)
@@ -26,3 +34,10 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+</style>
