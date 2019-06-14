@@ -6,6 +6,7 @@
 
 <script>
 import List from '@/components/List'
+import { updateLocalStorage, getLocalStorage } from '@/plugins/localStorage'
 
 export default {
   name: 'Cart',
@@ -18,15 +19,11 @@ export default {
     }
   },
   mounted () {
-    this.getLocalStorage()
+    this.itens = getLocalStorage()
   },
   methods: {
-    getLocalStorage () {
-      let cart = JSON.parse(localStorage.getItem('cart'))
-      if (cart !== null) this.itens = cart
-    },
     deleleItem (item) {
-      this.getLocalStorage()
+      this.itens = getLocalStorage()
       this.itens.forEach((product, index) => {
         if (product.sku === item.sku) {
           if (product.qtd === 1) {
@@ -36,11 +33,7 @@ export default {
           }
         }
       })
-      this.updateLocalStorageList()
-    },
-    updateLocalStorageList () {
-      localStorage.setItem('cart', JSON.stringify(this.itens))
-      this.getLocalStorage()
+      updateLocalStorage(this.itens)
     }
   }
 }

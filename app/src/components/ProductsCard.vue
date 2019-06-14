@@ -11,7 +11,10 @@
         <div class="card-content-media">
           <div class="card-content-media_detail">
             <p class="card-content-media_detail__title">{{product.title}}</p>
-            <p class="card-content-media_detail__price">{{product.currencyFormat}} {{product.price}}</p>
+            <p class="card-content-media_detail__price">
+              <span>{{product.currencyFormat}} </span>
+              <strong>{{product.price}}</strong>
+            </p>
             <p class="card-content-media_detail__description">{{product.description}}</p>
           </div>
         </div>
@@ -71,6 +74,21 @@ export default {
           }
           &__price {
             font-weight: bold;
+            &::before {
+              content: "";
+              width: 20px;
+              height: 3px;
+              display: block;
+              margin: 0 auto;
+              background-color: #dfbc00;
+              transition: all 0.5s;
+            }
+            span {
+              font-size: 12px;
+            }
+            strong {
+              font-size: 24px;
+            }
           }
         }
       }
@@ -78,11 +96,28 @@ export default {
   }
   .card {
     &:hover {
-      .card-image-link-icon {
-        opacity: 1;
-      }
-      .card-image-link-bg {
-        opacity: 0.5;
+      .card {
+        &-image {
+          &-link {
+            &-icon {
+              opacity: 1;
+            }
+            &-bg {
+              opacity: 0.5;
+            }
+          }
+        }
+        &-content {
+          &-media {
+            &_detail {
+              &__price {
+                &::before {
+                  width: 100px;
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
