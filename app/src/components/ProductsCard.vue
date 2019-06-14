@@ -2,7 +2,10 @@
   <div>
     <div class="card" @click="addItem(product)">
       <div class="card-image">
-        <img src="@/assets/img/notfound.png" alt="Imagem não encontrada" title="Imagem não encontrada">
+        <span class="card-image-link">
+          <img class="card-image-link-icon" src="@/assets/img/buy.png" alt="Imagem não encontrada" title="Imagem não encontrada">
+          <img class="card-image-link-bg" src="@/assets/img/camisa.jpg" alt="Imagem não encontrada" title="Imagem não encontrada">
+        </span>
       </div>
       <div class="card-content">
         <div class="card-content-media">
@@ -43,8 +46,21 @@ export default {
     width: 280px;
     margin: 0 10px;
     &-image {
-      img {
-        max-width: 100%;
+      &-link {
+        display: block;
+        position: relative;
+        cursor: pointer;
+        &-icon {
+          position: absolute;
+          left: 40%;
+          top: 35%;
+          width: 50px;
+          opacity: 0;
+        }
+        &-bg {
+          max-width: 100%;
+          transition: 0.5s all;
+        }
       }
     }
     &-content {
@@ -57,6 +73,16 @@ export default {
             font-weight: bold;
           }
         }
+      }
+    }
+  }
+  .card {
+    &:hover {
+      .card-image-link-icon {
+        opacity: 1;
+      }
+      .card-image-link-bg {
+        opacity: 0.5;
       }
     }
   }
