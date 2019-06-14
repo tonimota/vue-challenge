@@ -2,7 +2,7 @@
   <div>
     <div class="card" @click="addItem(product)">
       <div class="card-image">
-        <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+        <img src="@/assets/img/notfound.png" alt="Imagem não encontrada">
       </div>
       <div class="card-content">
         <div class="card-content-media">
@@ -32,31 +32,7 @@ export default {
   },
   methods: {
     addItem (product) {
-      this.getLocalStorage()
-      let add = false
-      this.newList.forEach((index) => {
-        if (index.sku === product.sku) {
-          if (index.qtd === undefined) {
-            this.$set(index, 'qtd', 2)
-          } else {
-            this.$set(index, 'qtd', index.qtd + 1)
-          }
-          add = true
-        }
-      })
-      if (!add) {
-        this.$set(product, 'qtd', 1)
-        this.newList.push(product)
-      }
-      this.updateLocalStorageList()
-    },
-    updateLocalStorageList () {
-      localStorage.setItem('cart', JSON.stringify(this.newList))
-      this.getLocalStorage()
-    },
-    getLocalStorage () {
-      let cart = JSON.parse(localStorage.getItem('cart'))
-      if (cart !== null) this.newList = cart
+      this.$emit('update-products', product)
     }
   }
 }
@@ -64,7 +40,7 @@ export default {
 
 <style lang="scss" scoped>
   .card {
-    max-width: 280px;
+    width: 280px;
     margin: 0 10px;
     &-image {
       img {
