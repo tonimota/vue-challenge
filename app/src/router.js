@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
-import Cart from './views/Cart.vue'
+const Home = () => import('./views/Home.vue')
+const Cart = () => import('./views/Cart.vue')
 
 Vue.use(Router)
 
