@@ -1,21 +1,19 @@
 <template>
   <div>
-    <img alt="Vue logo" src="../assets/logo.png">
     <div class="container">
-      <List :data="products " />
+      <Products :data="products" />
     </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import List from '@/components/List'
+import Products from '@/components/Products'
 import { getAllProducts } from '@/service/api'
 
 export default {
   name: 'home',
   components: {
-    List
+    Products
   },
   data () {
     return {
