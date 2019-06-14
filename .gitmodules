@@ -1,0 +1,3 @@
+[submodule "api-simple"]
+	path = api-simple
+	url = git@github.com:tonimota/api-simple.git
