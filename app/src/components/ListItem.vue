@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="card-figure">
-      <img src="@/assets/img/notfound.png" alt="">
+      <img src="@/assets/img/notfound.png" alt="Imagem não encontrada" title="Imagem não encontrada">
     </div>
     <div class="card-item">
       <p class="card-item-top">
@@ -52,7 +52,6 @@ export default {
     height: 100%;
     img {
       width: 50px;
-      /* margin-top: 25px; */
     }
   }
   &-item {

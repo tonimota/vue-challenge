@@ -2,7 +2,7 @@
   <div>
     <div class="card" @click="addItem(product)">
       <div class="card-image">
-        <img src="@/assets/img/notfound.png" alt="Imagem não encontrada">
+        <img src="@/assets/img/notfound.png" alt="Imagem não encontrada" title="Imagem não encontrada">
       </div>
       <div class="card-content">
         <div class="card-content-media">
