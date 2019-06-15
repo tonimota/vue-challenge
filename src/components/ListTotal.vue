@@ -20,7 +20,7 @@ export default {
 
 <style lang="scss" scoped>
   .total-cart {
-    height: 60px;
+    height: 70px;
     &-description {
       display: flex;
       justify-content: space-between;

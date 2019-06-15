@@ -86,7 +86,10 @@ export default {
   }
   @media screen and (max-width: 767px) {
     .list {
+      width: 100%;
+      max-width: 100%;
       padding: 0px;
+      margin: 0;
       &-icon {
         padding-top: 10px;
       }
