@@ -1,6 +1,7 @@
 <template>
-  <div>
+  <div class="wrapper">
     <div class="container">
+      <span :class="visible ? 'visible' : ''" class="tooltip">Item adicionado</span>
       <Products :data="products" @add-item="addItem"/>
     </div>
   </div>
@@ -19,7 +20,8 @@ export default {
   data () {
     return {
       products: null,
-      newList: []
+      newList: [],
+      visible: false
     }
   },
   async mounted () {
@@ -50,14 +52,56 @@ export default {
         this.newList.push(product)
       }
       updateLocalStorage(this.newList)
+      this.showTooltip()
+    },
+    showTooltip () {
+      this.visible = true
+      setTimeout(() => {
+        this.visible = false
+      }, 1000)
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
+  .wrapper {
+    margin-top: 80px;
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      .tooltip {
+        opacity: 0;
+        position: fixed;
+        right: 8%;
+        top: 90px;
+        width: 150px;
+        padding: 10px;
+        text-align: center;
+        z-index: 1;
+        background-color: rgba(223, 188, 0, 0.5);
+        border-radius: 10px;
+        -webkit-box-shadow: 6px 6px 8px 0px rgba(181,181,181,1);
+        -moz-box-shadow: 6px 6px 8px 0px rgba(181,181,181,1);
+        box-shadow: 6px 6px 8px 0px rgba(181,181,181,1);
+        transition: 0.5s all;
+      }
+    }
+  }
+  .visible {
+    opacity: 1!important;
+  }
+  @media screen and (max-width: 767px) {
+    .container {
+      width: 100%;
+      max-width: 100%;
+      .tooltip {
+        /* right: 0px; */
+        position: fixed;
+        right: 0px;
+        bottom: 10%;
+      }
+    }
   }
 </style>
