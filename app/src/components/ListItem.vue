@@ -1,12 +1,12 @@
 <template>
   <div class="card">
     <div class="card-figure">
-      <img src="@/assets/img/notfound.png" alt="Imagem não encontrada" title="Imagem não encontrada">
+      <img src="@/assets/img/camisa.jpg" alt="Imagem não encontrada" title="Imagem não encontrada">
     </div>
     <div class="card-item">
       <p class="card-item-top">
-        <span class="card-item-top_title">{{item.title}}</span>
-        <span class="card-item-top_description">{{item.description}}</span>
+        <span class="card-item-top_title overflow-line">{{item.title}}</span>
+        <span class="card-item-top_description overflow-line">{{item.description}}</span>
       </p>
       <p class="card-item-bottom">
         <span class="card-item-bottom_qtd">Quantidade: {{item.qtd}}</span>
@@ -14,7 +14,7 @@
       </p>
     </div>
     <div class="card-close">
-      <span @click="removeItem(item)">X</span>
+      <span @click="removeItem(item)">x</span>
     </div>
   </div>
 </template>
@@ -36,13 +36,37 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+$font-size: 12px;
+$line-height: 1.4;
+$lines-to-show: 1;
+
 .card {
+  position: relative;
   max-width: 380px;
   height: 60px;
   margin: 0 auto;
   padding: 10px;
   display: flex;
   border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  &:hover {
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+      z-index: 3;
+      background-color: #000;
+      opacity: 0.3;
+      -webkit-transition: all 0.5s;
+      transition: all 0.5s;
+    }
+    .card-close {
+      color: #fff;
+    }
+  }
   &:first-child {
     border-top: 1px solid rgba(0, 0, 0, 0.5);
   }
@@ -87,10 +111,32 @@ export default {
     }
   }
   &-close {
+    z-index: 9999;
     :hover {
       color: #fff;
       cursor: pointer;
     }
   }
+}
+@media screen and (max-width: 767px) {
+  .card {
+    &-figure {
+      min-width: 70px;
+    }
+  }
+}
+.overflow-line {
+  display: block;
+  display: -webkit-box;
+  max-width: 100%;
+  height: $font-size*$line-height*$lines-to-show; /* Fallback for non-webkit */
+  margin: 0 auto;
+  font-size: $font-size;
+  line-height: $line-height;
+  -webkit-line-clamp: $lines-to-show;
+   /* autoprefixer: off */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 </style>
