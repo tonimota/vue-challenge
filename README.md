@@ -1,8 +1,20 @@
 # vue-challennge
 
+
+
 ## Project setup
 ```
 npm install
+```
+
+### Project online
+```
+https://vuejs-app-list.herokuapp.com/
+```
+### Api online
+```
+urlBase: https://api-list-simple.herokuapp.com
+  /products
 ```
 
 ### Compiles and hot-reloads for development
