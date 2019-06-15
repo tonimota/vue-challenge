@@ -49,7 +49,7 @@ export default {
       let totalItens = 0
       let totalOrder = 0
       let totalInstallments = 0
-      if (cart.length > 0) {
+      if (cart !== null ) {
         cart.forEach((index) => {
           totalItens = totalItens + index.qtd
           totalOrder = totalOrder + (index.qtd * index.price)
