@@ -26,7 +26,7 @@
       position: fixed;
       top: 0px;
       left: 0px;
-      padding: 30px;
+      padding: 30px 0px;
       z-index: 99999;
       a {
         font-weight: bold;
@@ -34,13 +34,6 @@
         &.router-link-exact-active {
           color: #42b983;
         }
-      }
-    }
-  }
-  @media screen and (max-width: 767px) {
-    #app {
-      #nav {
-        padding: 30px 0px;
       }
     }
   }

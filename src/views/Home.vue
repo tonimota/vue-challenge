@@ -1,8 +1,10 @@
 <template>
   <div class="wrapper">
     <div class="container">
+      <img v-show="loading" class="loading" src="@/assets/img/basicloader.gif" alt="">
+      <p v-if="!loading && !showList">{{messageErro}}</p>
       <span :class="visible ? 'visible' : ''" class="tooltip">Item adicionado</span>
-      <Products :data="products" @add-item="addItem"/>
+      <Products v-show="showList" :data="products" @add-item="addItem"/>
     </div>
   </div>
 </template>
@@ -21,16 +23,21 @@ export default {
     return {
       products: null,
       newList: [],
-      visible: false
+      visible: false,
+      loading: true,
+      showList: false,
+      messageErro: 'Not found Products, service temporarily down. Sorry for inconvenience'
     }
   },
   async mounted () {
     await getAllProducts()
       .then(data => {
         this.products = data.data.products
+        this.hiddenLoadind()
       })
       .catch(err => {
         console.log(err)
+        this.hiddenLoadind()
       })
   },
   methods: {
@@ -58,6 +65,12 @@ export default {
       this.visible = true
       setTimeout(() => {
         this.visible = false
+      }, 1000)
+    },
+    hiddenLoadind () {
+      setTimeout(() => {
+        this.showList = true
+        this.loading = false
       }, 1000)
     }
   }
@@ -97,6 +110,7 @@ export default {
       .container {
         width: 100%;
         max-width: 100%;
+        position: relative;
         .tooltip {
           position: fixed;
           right: 20px;
