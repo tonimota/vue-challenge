@@ -93,14 +93,15 @@ export default {
     opacity: 1!important;
   }
   @media screen and (max-width: 767px) {
-    .container {
-      width: 100%;
-      max-width: 100%;
-      .tooltip {
-        /* right: 0px; */
-        position: fixed;
-        right: 0px;
-        bottom: 10%;
+    .wrapper {
+      .container {
+        width: 100%;
+        max-width: 100%;
+        .tooltip {
+          position: fixed;
+          right: 20px;
+          top: initial;
+        }
       }
     }
   }

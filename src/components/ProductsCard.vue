@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="card" @click="addItem(product)">
+    <div class="card" @click.native="addItem(product)">
       <div class="card-image">
         <span class="card-image-link">
           <span class="card-image-link-icon">Buy</span>
