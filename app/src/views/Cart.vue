@@ -1,6 +1,8 @@
 <template>
-  <div class="container">
-    <List :data="itens" @delete-item="deleleItem"/>
+  <div class="wrapper">
+    <div class="container">
+      <List :data="itens" @delete-item="deleleItem" :cart="cart"/>
+    </div>
   </div>
 </template>
 
@@ -15,11 +17,17 @@ export default {
   },
   data () {
     return {
-      itens: []
+      itens: [],
+      cart: {
+        totalItens: 0,
+        totalOrder: 0,
+        totalInstallments: 0
+      }
     }
   },
   mounted () {
     this.itens = getLocalStorage()
+    this.calcTotalItens()
   },
   methods: {
     deleleItem (item) {
@@ -34,14 +42,37 @@ export default {
         }
       })
       updateLocalStorage(this.itens)
+      this.calcTotalItens()
+    },
+    calcTotalItens () {
+      const cart = getLocalStorage()
+      let totalItens = 0
+      let totalOrder = 0
+      let totalInstallments = 0
+      if (cart.length > 0) {
+        cart.forEach((index) => {
+          totalItens = totalItens + index.qtd
+          totalOrder = totalOrder + (index.qtd * index.price)
+        })
+        totalInstallments = (totalOrder / 10).toFixed(2).replace('.', ',')
+        totalOrder = totalOrder.toFixed(2).replace('.', ',')
+      }
+      this.cart = {
+        totalItens,
+        totalOrder,
+        totalInstallments
+      }
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
+  .wrapper {
+    margin-top: 90px;
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
   }
 </style>
