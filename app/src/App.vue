@@ -2,7 +2,7 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/cart">Carrinho</router-link>
+      <router-link to="/cart">Cart</router-link>
     </div>
     <router-view/>
   </div>
@@ -21,7 +21,14 @@ html, body {
   color: #2c3e50;
 }
 #nav {
+  width: 100%;
+  max-height: 70px;
+  background-color: #fff;
+  position: fixed;
+  top: 0px;
+  left: 0px;
   padding: 30px;
+  z-index: 99999;
   a {
     font-weight: bold;
     color: #2c3e50;
