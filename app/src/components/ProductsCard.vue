@@ -3,8 +3,8 @@
     <div class="card" @click="addItem(product)">
       <div class="card-image">
         <span class="card-image-link">
-          <img class="card-image-link-icon" src="@/assets/img/buy.png" alt="Imagem não encontrada" title="Imagem não encontrada">
-          <img class="card-image-link-bg" src="@/assets/img/camisa.jpg" alt="Imagem não encontrada" title="Imagem não encontrada">
+          <span class="card-image-link-icon">Buy</span>
+          <img class="card-image-link-bg" src="@/assets/img/camisa.jpg" :alt="product.title" :title="product.title">
         </span>
       </div>
       <div class="card-content">
@@ -48,6 +48,8 @@ export default {
   .card {
     width: 280px;
     margin: 0 10px;
+    position: relative;
+    overflow: hidden;
     &-image {
       &-link {
         display: block;
@@ -56,9 +58,13 @@ export default {
         &-icon {
           position: absolute;
           left: 40%;
-          top: 35%;
+          /* top: 50%; */
           width: 50px;
           opacity: 0;
+          color: #000;
+          font-weight: bold;
+          font-size: 24px;
+          line-height: 280px;
         }
         &-bg {
           max-width: 100%;
