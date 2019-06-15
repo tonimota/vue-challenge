@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const products = axios.create({
-  baseURL: 'http://localhost:3002',
+  baseURL: 'https://api-list-simple.herokuapp.com',
   timeout: 2000
 })
 
