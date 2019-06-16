@@ -1,10 +1,17 @@
 # vue-challennge
 
 <img src="./public/static/components.png" alt="components"/>
+```
+Flux comunictions beetwen compoents: 
+Component1 > Component2 > Componet3
+*Component3 emit event*
+Component3 > Component2 > Componet1
+```
 
 ## Poject
 ```
 url: https://vuejs-app-list.herokuapp.com/
+Usage: Axios, vue-router, express (server)
 ```
 ### Api Products + Images (Bucket S3)
 ```
