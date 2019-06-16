@@ -1,6 +1,6 @@
 # vue-challennge
 
-![Alt text](/public/static/components.png?raw=true "Title")
+<img src="./public/static/components.png" alt="components"/>
 
 ## Poject
 ```
