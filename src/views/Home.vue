@@ -2,8 +2,8 @@
   <div class="wrapper">
     <div class="container">
       <img v-show="loading" class="loading" src="@/assets/img/basicloader.gif" alt="">
-      <p v-if="!loading && !showList">{{messageErro}}</p>
-      <span :class="visible ? 'visible' : ''" class="tooltip">Item adicionado</span>
+      <p v-if="showError && !loading">{{messageErro}}</p>
+      <span :class="tooltip ? 'visible' : ''" class="tooltip">Item adicionado</span>
       <Products v-show="showList" :data="products" @add-item="addItem"/>
     </div>
   </div>
@@ -23,9 +23,10 @@ export default {
     return {
       products: null,
       newList: [],
-      visible: false,
+      tooltip: false,
       loading: true,
       showList: false,
+      showError: false,
       messageErro: 'Not found Products, service temporarily down. Sorry for inconvenience'
     }
   },
@@ -37,14 +38,15 @@ export default {
       })
       .catch(err => {
         console.log(err)
+        this.showError = true
         this.hiddenLoadind()
       })
   },
   methods: {
     addItem (product) {
-      this.newList = getLocalStorage() !== null ? getLocalStorage() : this.newList
+      let list = getLocalStorage() !== null ? getLocalStorage() : this.newList
       let add = false
-      this.newList.forEach((index) => {
+      list.forEach((index) => {
         if (index.sku === product.sku) {
           if (index.qtd === undefined) {
             this.$set(index, 'qtd', 2)
@@ -56,15 +58,16 @@ export default {
       })
       if (!add) {
         this.$set(product, 'qtd', 1)
-        this.newList.push(product)
+        list.push(product)
       }
+      this.newList = list
       updateLocalStorage(this.newList)
       this.showTooltip()
     },
     showTooltip () {
-      this.visible = true
+      this.tooltip = true
       setTimeout(() => {
-        this.visible = false
+        this.tooltip = false
       }, 1000)
     },
     hiddenLoadind () {

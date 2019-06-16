@@ -1,5 +1,5 @@
 <template>
-  <div class="list" :class="btn">
+  <div class="list">
     <ProductsCard v-for="(item, index) in data" :key="index" :product="item" @update-products="updateProducts"/>
   </div>
 </template>
@@ -11,13 +11,7 @@ export default {
   props: {
     data: {
       type: Array,
-      default: () => {},
-      required: true
-    },
-    btn: {
-      type: Boolean,
-      default: false,
-      required: true
+      default: () => {}
     }
   },
   components: {
@@ -25,7 +19,6 @@ export default {
   },
   methods: {
     updateProducts (product) {
-      console.log('updateProducts')
       this.$emit('add-item', product)
     }
   }
