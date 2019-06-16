@@ -1,5 +1,5 @@
 <template>
-  <div class="list">
+  <div class="list" :class="btn">
     <ProductsCard v-for="(item, index) in data" :key="index" :product="item" @update-products="updateProducts"/>
   </div>
 </template>
@@ -11,11 +11,13 @@ export default {
   props: {
     data: {
       type: Array,
-      default: () => {}
+      default: () => {},
+      required: true
     },
     btn: {
       type: Boolean,
-      default: false
+      default: false,
+      required: true
     }
   },
   components: {

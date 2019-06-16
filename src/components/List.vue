@@ -22,11 +22,13 @@ export default {
   props: {
     data: {
       type: Array,
-      default: () => {}
+      default: () => {},
+      required: true
     },
     cart: {
       type: Object,
-      default: () => {}
+      default: () => {},
+      required: true
     }
   },
   components: {
