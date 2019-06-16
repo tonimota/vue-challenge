@@ -2,7 +2,7 @@
 
 <img src="./public/static/components.png" alt="components"/>
 
-### Flux comunictions beetwen compoents (Max 3 levels): 
+### Communication flow between components (Max 3 levels): 
 ```
 Component1 > Component2 > Componet3
 *Component3 emit event*
