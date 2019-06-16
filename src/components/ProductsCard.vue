@@ -4,7 +4,7 @@
       <div class="card-image">
         <span class="card-image-link">
           <span class="card-image-link-icon">Buy</span>
-          <img class="card-image-link-bg" src="@/assets/img/camisa.jpg" :alt="product.title" :title="product.title">
+          <img class="card-image-link-bg" :src="product.img" :alt="product.title" :title="product.title">
         </span>
       </div>
       <div class="card-content">
@@ -13,7 +13,7 @@
             <p class="card-content-media_detail__title">{{product.title}}</p>
             <p class="card-content-media_detail__price">
               <span>{{product.currencyFormat}} </span>
-              <strong>{{product.price}}</strong>
+              <strong>{{currencyData}}</strong>
             </p>
             <p class="card-content-media_detail__description">{{product.description}}</p>
           </div>
@@ -35,6 +35,11 @@ export default {
   data () {
     return {
       newList: []
+    }
+  },
+  computed: {
+    currencyData: function () {
+      return this.product.price.toFixed(2).replace('.', ',')
     }
   },
   methods: {
@@ -59,7 +64,6 @@ export default {
         &-icon {
           position: absolute;
           left: 40%;
-          /* top: 50%; */
           width: 50px;
           opacity: 0;
           color: #000;

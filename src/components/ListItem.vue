@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="card-figure">
-      <img src="@/assets/img/camisa.jpg" alt="Imagem não encontrada" title="Imagem não encontrada">
+      <img :src="item.img" alt="Imagem não encontrada" title="Imagem não encontrada">
     </div>
     <div class="card-item">
       <p class="card-item-top">
@@ -10,7 +10,7 @@
       </p>
       <p class="card-item-bottom">
         <span class="card-item-bottom_qtd">Quantidade: {{item.qtd}}</span>
-        <span class="card-item-bottom_price">{{item.currencyFormat}} {{item.price}}</span>
+        <span class="card-item-bottom_price">{{item.currencyFormat}} {{currencyData}}</span>
       </p>
     </div>
     <div class="card-close">
@@ -25,6 +25,11 @@ export default {
     item: {
       type: Object,
       default: () => {}
+    }
+  },
+  computed: {
+    currencyData: function () {
+      return this.item.price.toFixed(2).replace('.', ',')
     }
   },
   methods: {
@@ -100,9 +105,6 @@ $lines-to-show: 1;
     &-bottom {
       flex: 1;
         line-height: 29px;
-      &_qtd {
-
-      }
       &_price {
         float: right;
         color: #dfbd00;
