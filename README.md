@@ -1,20 +1,19 @@
 # vue-challennge
 
+![Alt text](/public/static/components.png?raw=true "Title")
 
+## Poject
+```
+url: https://vuejs-app-list.herokuapp.com/
+```
+### Api Products + Images (Bucket S3)
+```
+url: https://api-list-simple.herokuapp.com + /products
+```
 
 ## Project setup
 ```
 npm install
-```
-
-### Project online
-```
-https://vuejs-app-list.herokuapp.com/
-```
-### Api online
-```
-urlBase: https://api-list-simple.herokuapp.com
-  /products
 ```
 
 ### Compiles and hot-reloads for development
@@ -25,16 +24,6 @@ npm run serve
 ### Compiles and minifies for production
 ```
 npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
 ```
 
 ### Run your unit tests
